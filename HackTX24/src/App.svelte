@@ -1,7 +1,9 @@
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+  import FirstScreen from "./lib/FirstScreen.svelte";
+  import { currentPage } from "./lib/screenManager";
+  import ChatWindow from "./lib/ChatWindow.svelte";
+  // currentPage.set(FirstScreen);
+  currentPage.set(ChatWindow);
 </script>
 
 <main>

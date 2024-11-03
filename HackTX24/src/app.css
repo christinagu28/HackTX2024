@@ -1,7 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tiny5&display=swap');
+
+@font-face {
+  font-family: 'Joystix Monospace';
+  src: url('joystix-monospace.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Hun';
+  src: url('hun2.ttf') format('truetype');
+}
 
 :root {
-  font-family: 'Sixtyfour Convergence';
+  font-family: 'Sixtyfour Convergence', serif;
   line-height: 1.5;
   font-weight: 400;
 
