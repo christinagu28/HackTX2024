@@ -23,11 +23,11 @@
 
   function submit() {
     socket.send(
-            JSON.stringify({
-              type: "join_rq",
-              name,
-              room,
-            })
+      JSON.stringify({
+        type: "join_rq",
+        name,
+        // room,
+      })
     );
     sent = true;
   }
@@ -38,10 +38,10 @@
     <div class="vert">
       <label for="room">Room:</label>
       <input
-              id="room"
-              type="text"
-              bind:value={room}
-              placeholder="Enter Server Room"
+        id="room"
+        type="text"
+        bind:value={room}
+        placeholder="Enter Server Room"
       />
     </div>
     <div class="vert">
