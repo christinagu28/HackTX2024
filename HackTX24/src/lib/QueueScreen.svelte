@@ -2,6 +2,8 @@
   import { socket, commands } from "./socket";
   import { name } from "./user";
   import { icon_url } from "./icons";
+  import MainScreen from "./MainScreen.svelte";
+  import { currentPage } from "./screenManager";
 
   let ready: boolean = $state(false);
   let elapsed: number = $state(0);
@@ -11,6 +13,7 @@
   commands.set("game_start", () => {
     // currentPage.set()
     console.log("Starting game!");
+    currentPage.set(MainScreen);
   });
 
   commands.set("game_state", () => {
@@ -56,7 +59,11 @@
 <div class="center-gradient">
   <div class="center">
     <div class="vert">
-      <label for="loading-image">{blocking_message}{".".repeat(elapsed)}</label>
+      <label for="loading-image"
+        >{blocking_message}{".".repeat(elapsed)}{@html "&nbsp".repeat(
+          3 - elapsed
+        )}</label
+      >
       <img
         id="loading-image"
         src="WalkingCat.gif"

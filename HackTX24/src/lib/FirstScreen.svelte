@@ -3,6 +3,7 @@
   import { name } from "./user";
   import { currentPage } from "./screenManager";
   import { socket, commands } from "./socket";
+  import { game, threads } from "./game";
 
   let room: string = $state("");
   let sent: boolean = $state(false);
@@ -19,6 +20,14 @@
       sent = false;
       dupe = true;
     }
+  });
+
+  commands.set("game_state", (obj) => {
+    game.set(obj);
+  });
+
+  commands.set("thread_set", ({ threadInfo }) => {
+    threads.set(threadInfo);
   });
 
   function submit() {
