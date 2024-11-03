@@ -1,8 +1,9 @@
 <script lang="ts">
   import { socket, commands } from "./socket";
-  import { currentPage } from "./screenManager";
+  import { name } from "./user";
   import { icon_url } from "./icons";
 
+  let ready: boolean = $state(false);
   let elapsed: number = $state(0);
   let loaded: boolean = $state(false);
   let lobby: Record<string, boolean> = $state({});
@@ -18,6 +19,7 @@
 
   commands.set("lobby_data", (lobby_data) => {
     lobby = lobby_data.readiness;
+    ready = lobby[$name];
     console.log(lobby);
   });
 
@@ -42,6 +44,13 @@
       clearInterval(id);
     };
   });
+
+  function readyUp() {
+    ready = !ready;
+    socket.send(
+      JSON.stringify({ type: "lobby_readiness_data", newReadiness: ready })
+    );
+  }
 </script>
 
 <div class="center-gradient">
@@ -55,6 +64,12 @@
         width="100px"
         height="100px"
       />
+
+      {#if Object.keys(lobby).length >= 3}
+        <button onclick={readyUp}
+          >{#if ready}UN{/if}READY</button
+        >
+      {/if}
 
       {#each Object.keys(lobby) as name}
         <div>
@@ -89,12 +104,5 @@
   label {
     font-size: 16px;
     font-weight: bold;
-  }
-  input {
-    background-color: transparent;
-    border: none;
-    font-family: "Sixtyfour Convergence";
-    color: rgba(10, 10, 10, 0.5);
-    font-size: 20px;
   }
 </style>

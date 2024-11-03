@@ -1,10 +1,10 @@
 <script lang="ts">
   import QueueScreen from "./QueueScreen.svelte";
+  import { name } from "./user";
   import { currentPage } from "./screenManager";
   import { socket, commands } from "./socket";
 
   let room: string = $state("");
-  let name: string = $state("");
   let sent: boolean = $state(false);
   let dupe: boolean = $state(false);
 
@@ -25,7 +25,7 @@
     socket.send(
       JSON.stringify({
         type: "join_rq",
-        name,
+        name: $name,
         // room,
       })
     );
@@ -46,7 +46,12 @@
     </div>
     <div class="vert">
       <label for="name">Name:</label>
-      <input id="name" type="text" bind:value={name} placeholder="Enter Name" />
+      <input
+        id="name"
+        type="text"
+        bind:value={$name}
+        placeholder="Enter Name"
+      />
       {#if dupe}
         <small id="name-taken">Name taken</small>
       {/if}
