@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Sixtyfour Convergence';
   line-height: 1.5;
   font-weight: 400;
 
@@ -11,6 +13,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-image: url("ArcadeBackground.jpeg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 a {
@@ -28,6 +34,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  background: radial-gradient(circle, rgba(250, 210, 255, 0.5) 20%, rgba(255, 255, 255, 0.1) 90%);
 }
 
 h1 {

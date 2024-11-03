@@ -1,7 +1,14 @@
 <script lang="ts">
-  import ChatWindow from "./ChatWindow.svelte";
+  import svelteLogo from './assets/svelte.svg'
+  import viteLogo from '/vite.svg'
+  import Counter from './lib/Counter.svelte'
 </script>
 
 <main>
-  <ChatWindow />
+  <div class="card">
+    <svelte:component this={$currentPage} />
+  </div>
 </main>
+
+<style>
+</style>

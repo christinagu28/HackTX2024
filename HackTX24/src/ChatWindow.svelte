@@ -2,8 +2,8 @@
     let messages = $state([""]);
     let {player = "Test Player"} = $props();
     let text = $state("");
-    import CloseChat from './assets/Close-Chat.svg';
-    import Send from './assets/Send.svg';
+    import CloseChat from '../public/Close-Chat.svg';
+    import Send from '../public/Send.svg';
 
     const closeChat = () => {
         console.log("Closing chat");
