@@ -7,7 +7,7 @@ The concept of this game was inspired by Spyfall, a popular party game that’s 
 
 ## Usage
 
-Try out our game at [SusPictions.tech](SusPictions.tech)!
+Try out our game at [SusPictions.tech](https://suspictions.tech/)!
 
 ## Tech Stack
 Svelte (UI), Typescript (logic), CSS (style), websockets, and Ktor
