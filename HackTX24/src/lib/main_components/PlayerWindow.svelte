@@ -1,25 +1,26 @@
 <script lang="ts">
-  import { game } from "../game";
-  import { icon_url } from "../icons";
-  import { name } from "../user";
+  import { getIconFor } from "../icons";
 
   const startVote = () => {
     console.log("Starting vote");
   };
+  
+  const game= {players: ["sdf", "sdfsdfd"]}
+  const name = "sdf";
 </script>
 
 <div class="vert_holder">
   <div class="card">
     <div class="players">
-      {#each $game.players as player}
-        {#if player === $name}
+      {#each game.players as player}
+        {#if player === name}
           <div class="player" style="background-color: goldenrod;">
-            <img src={icon_url(player)} alt="" height="22px" />
+            <img src={getIconFor(player)} alt="" height="22px" width="22" />
             {player} <small>(you)</small>
           </div>
         {:else}
           <div class="player" style="background-color: goldenrod;">
-            <img src={icon_url(player)} alt="" height="22px" />
+            <img src={getIconFor(player)} alt="" height="22px" />
             {player}
           </div>
         {/if}
@@ -70,7 +71,7 @@
     background-color: rgba(204, 192, 255, 0.8);
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
+    flex-direction: row;
     color: #000000;
   }
 
@@ -85,6 +86,7 @@
     flex-direction: column;
     color: #000000;
     position: relative;
+    right: 0px;
   }
 
   .timer {

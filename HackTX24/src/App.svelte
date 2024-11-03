@@ -1,15 +1,9 @@
 <script lang="ts">
-  import FirstScreen from "./lib/FirstScreen.svelte";
-  import { currentPage } from "./lib/screenManager";
-
-  currentPage.set(FirstScreen);
-  // currentPage.set(ChatWindow);
+    import {display} from "./lib/state.svelte";
 </script>
 
 <main>
-  <div class="card">
-    <svelte:component this={$currentPage} />
-  </div>
+        <svelte:component this={display.page}/>
 </main>
 
 <style>

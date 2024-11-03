@@ -1,7 +1,6 @@
 <script lang="ts">
   import CloseChat from "../../assets/Close-Chat.svg";
   import Send from "../../assets/Send.svg";
-  import { name } from "../user";
 
   //==========debug==========
   let messages = $state([
@@ -10,12 +9,15 @@
       text: "hello",
     },
   ]);
+  
+  let visible = $state(true);
 
   let text = $state("");
   //==========debug==========
 
   const closeChat = () => {
     console.log("Closing chat");
+    visible = false;
   };
   const enterListener = (event: KeyboardEvent) => {
     if (event.key === "Enter") {
@@ -36,6 +38,7 @@
   };
 </script>
 
+{#if visible}
 <div class="card">
   <div class="card-top">
     <h2>
@@ -64,6 +67,7 @@
     </button>
   </div>
 </div>
+  {/if}
 
 <style>
   .close-chat {

@@ -1,16 +1,12 @@
-function hash(s: string, max_val: number) {
-    return (
-        ((s.split("").reduce((hash, char) => {
-                    return char.charCodeAt(0) + (hash << 6) + (hash << 16) - hash;
-                }, 0) %
-                max_val) +
-            max_val) %
-        max_val
-    );
+const max = 102;
+
+// was this rly necessary
+function hashName(username: string) {
+    return (((Array.from(username).reduce((hash, char) =>
+        char.charCodeAt(0) + (hash << 6) + (hash << 16) - hash, 0) % max) + max) % max);
 }
 
-function icon_url(s: string) {
-    return `icons/${hash(s, 102)}.png`;
+export function getIconFor(username: string): string {
+    let hash = hashName(username);
+    return `icons/${hash}.png`;
 }
-
-export {icon_url};
