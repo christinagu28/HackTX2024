@@ -4,13 +4,13 @@
   import ChatWindow from "./lib/ChatWindow.svelte";
   import PlayerWindow from "./lib/PlayerWindow.svelte";
   // currentPage.set(FirstScreen);
-  currentPage.set(ChatWindow);
+  // currentPage.set(ChatWindow);
 </script>
 
 <main>
-  <div class="card">
-    <svelte:component this={$currentPage} />
-  </div>
+<!--  <div class="card">-->
+<!--    <svelte:component this={$currentPage} />-->
+<!--  </div>-->
   <div>
     <svelte:component this={PlayerWindow} />
   </div>
