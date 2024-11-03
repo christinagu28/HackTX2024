@@ -3,8 +3,9 @@
     import {lobbyState} from "../lib/state.svelte";
     import {getIconFor} from "../lib/icons";
 
-    const { untypedName } = $props();
-    const name = untypedName as string;
+    type Props = { name: string }
+    
+    const { name }: Props = $props();
     let ready = $derived(lobbyState.data[name]);
     let color = $derived(ready ? '#209820' : '#dc0a38');
     let text = $derived(ready ? 'ready!' : 'waiting');

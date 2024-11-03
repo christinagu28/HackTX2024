@@ -3,11 +3,11 @@ import {on} from "./socket.svelte";
 import NameScreen from "../components/NameScreen.svelte";
 import ReadyScreen from "../components/ReadyScreen.svelte";
 import GameDisplay from "../components/game/GameDisplay.svelte";
-import MainScreen from "./MainScreen.svelte";
+import * as worker_threads from "node:worker_threads";
 
 // state, i think its self explanatory for the most part 
 // this part is not the actual game-related part
-export let display: { page: Component } = $state({page: GameDisplay})
+export let display: { page: Component } = $state({page: NameScreen})
 
 export function finishNameScreen(goodNameValue: string) {
     console.log('finished name screen with value: ', goodNameValue)
@@ -49,13 +49,20 @@ export let gameState: {
         msgs: {
             username: string, 
             text: string
-        }
+        }[]
     }[],
     votingSession?: { [key: string]: string }
 } = $state({threads: []})
 
 on('game_state', (data) => {
     gameState.base = data
+    display.page = GameDisplay;
+    moveToGameView();
+});
+
+on('game_role', (data) => {
+    gameState.base = data
+    display.page = GameDisplay;
 });
 
 export function moveToGameView() {
@@ -65,3 +72,21 @@ export function moveToGameView() {
 
     display.page = GameDisplay
 }
+
+// sync with server
+on('new_thread', (data) => {
+    gameState.threads.push({
+        ...data, msgs: []
+    });
+    console.log('created new thread state!')
+});
+
+on('new_msg', (data) => {
+    gameState.threads[data.threadId].msgs.push({ username: data.user,  text: data.text});
+    console.log('received message for thread')
+})
+
+on('thread_set', (data) => {
+    gameState.threads = data.threadInfo
+    console.log('setting entire thread information')
+})

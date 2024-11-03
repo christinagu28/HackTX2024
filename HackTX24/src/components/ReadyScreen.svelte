@@ -40,7 +40,7 @@
         <img src="WalkingCat.gif" alt="a walking cat animation"/>
         <button onclick={readyUp} disabled={!moreThan3Players}>{btnText}</button>
         {#each Object.keys(lobbyState.data) as name (name)}
-            <ReadyPlayerDisplay untypedName={name}/>
+            <ReadyPlayerDisplay name={name}/>
         {/each}
     </div>
 </div>

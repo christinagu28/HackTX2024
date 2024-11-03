@@ -48,7 +48,7 @@
     .title {
         padding: -7px;
         margin: 0 -10px 0 -10px;
-        /*font-family: 'Sixtyfour Convergence', sans-serif;*/
+        font-family: 'Sixtyfour Convergence', sans-serif;
         font-size: 100px;
     }
 
